@@ -1,0 +1,380 @@
+/**
+ * Tessera Brand Theme
+ * Enterprise Behavioral Intelligence Through Pattern Tessellation
+ */
+
+:root {
+  /* Tessera Brand Colors */
+  --tessera-primary-50: #eff6ff;
+  --tessera-primary-100: #dbeafe;
+  --tessera-primary-200: #bfdbfe;
+  --tessera-primary-300: #93c5fd;
+  --tessera-primary-400: #60a5fa;
+  --tessera-primary-500: #3b82f6;
+  --tessera-primary-600: #2563eb;
+  --tessera-primary-700: #1d4ed8;
+  --tessera-primary-800: #1e40af;
+  --tessera-primary-900: #1e3a8a;
+  --tessera-primary-950: #172554;
+
+  --tessera-secondary-50: #faf5ff;
+  --tessera-secondary-100: #f3e8ff;
+  --tessera-secondary-200: #e9d5ff;
+  --tessera-secondary-300: #d8b4fe;
+  --tessera-secondary-400: #c084fc;
+  --tessera-secondary-500: #a855f7;
+  --tessera-secondary-600: #9333ea;
+  --tessera-secondary-700: #7c3aed;
+  --tessera-secondary-800: #6b21a8;
+  --tessera-secondary-900: #581c87;
+  --tessera-secondary-950: #3b0764;
+
+  --tessera-accent-50: #ecfeff;
+  --tessera-accent-100: #cffafe;
+  --tessera-accent-200: #a5f3fc;
+  --tessera-accent-300: #67e8f9;
+  --tessera-accent-400: #22d3ee;
+  --tessera-accent-500: #06b6d4;
+  --tessera-accent-600: #0891b2;
+  --tessera-accent-700: #0e7490;
+  --tessera-accent-800: #155e75;
+  --tessera-accent-900: #164e63;
+  --tessera-accent-950: #083344;
+
+  /* Tessera Gradients */
+  --tessera-gradient-primary: linear-gradient(135deg, var(--tessera-primary-500), var(--tessera-secondary-500), var(--tessera-accent-500));
+  --tessera-gradient-secondary: linear-gradient(135deg, var(--tessera-primary-800), var(--tessera-primary-600));
+  --tessera-gradient-accent: linear-gradient(135deg, var(--tessera-accent-500), var(--tessera-primary-500));
+  --tessera-gradient-dark: linear-gradient(135deg, #1e293b, #334155);
+
+  /* Tessera Typography */
+  --tessera-font-display: 'Cal Sans', 'Inter', system-ui, sans-serif;
+  --tessera-font-sans: 'Inter', system-ui, sans-serif;
+  --tessera-font-mono: 'JetBrains Mono', 'Monaco', monospace;
+
+  /* Tessera Spacing (8px base) */
+  --tessera-space-xs: 0.25rem;  /* 4px */
+  --tessera-space-sm: 0.5rem;   /* 8px */
+  --tessera-space-md: 1rem;     /* 16px */
+  --tessera-space-lg: 1.5rem;   /* 24px */
+  --tessera-space-xl: 2rem;     /* 32px */
+  --tessera-space-2xl: 3rem;    /* 48px */
+  --tessera-space-3xl: 4rem;    /* 64px */
+
+  /* Tessera Border Radius */
+  --tessera-radius-sm: 0.25rem;
+  --tessera-radius-md: 0.5rem;
+  --tessera-radius-lg: 0.75rem;
+  --tessera-radius-xl: 1rem;
+  --tessera-radius-2xl: 1.5rem;
+
+  /* Tessera Shadows - Disabled for cleaner appearance */
+  --tessera-shadow-sm: none;
+  --tessera-shadow-md: none;
+  --tessera-shadow-lg: none;
+  --tessera-shadow-xl: none;
+  --tessera-shadow-brand: none;
+
+  /* Tessera Animation */
+  --tessera-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --tessera-transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --tessera-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tessera Component Classes */
+
+/* Logo and Branding */
+.tessera-logo {
+  font-family: var(--tessera-font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  background: var(--tessera-gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tessera-brand-glow {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Pattern Elements */
+.tessera-pattern-bg {
+  background-image: 
+    radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.15) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.tessera-tessellation {
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    var(--tessera-primary-500) 0deg,
+    var(--tessera-secondary-500) 120deg,
+    var(--tessera-accent-500) 240deg,
+    var(--tessera-primary-500) 360deg
+  );
+  opacity: 0.1;
+}
+
+/* Card Components */
+.tessera-card {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: var(--tessera-radius-lg);
+  box-shadow: none;
+  transition: all var(--tessera-transition-normal);
+}
+
+.tessera-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: none;
+  transform: translateY(-2px);
+}
+
+.tessera-card-premium {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1));
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+/* Button Styles */
+.tessera-btn-primary {
+  background: var(--tessera-gradient-primary);
+  color: white;
+  border: none;
+  border-radius: var(--tessera-radius-md);
+  padding: var(--tessera-space-sm) var(--tessera-space-lg);
+  font-weight: 600;
+  transition: all var(--tessera-transition-normal);
+  box-shadow: none;
+}
+
+.tessera-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: none;
+}
+
+.tessera-btn-secondary {
+  background: transparent;
+  color: var(--tessera-primary-400);
+  border: 1px solid var(--tessera-primary-600);
+  border-radius: var(--tessera-radius-md);
+  padding: var(--tessera-space-sm) var(--tessera-space-lg);
+  font-weight: 500;
+  transition: all var(--tessera-transition-normal);
+}
+
+.tessera-btn-secondary:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--tessera-primary-400);
+  color: white;
+}
+
+/* Navigation */
+.tessera-nav {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.tessera-nav-item {
+  color: rgba(203, 213, 225, 0.8);
+  transition: color var(--tessera-transition-fast);
+  padding: var(--tessera-space-sm) var(--tessera-space-md);
+  border-radius: var(--tessera-radius-md);
+}
+
+.tessera-nav-item:hover {
+  color: var(--tessera-primary-300);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.tessera-nav-item.active {
+  color: var(--tessera-primary-400);
+  background: rgba(59, 130, 246, 0.15);
+}
+
+/* Form Elements */
+.tessera-input {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(100, 116, 139, 0.3);
+  border-radius: var(--tessera-radius-md);
+  padding: var(--tessera-space-sm) var(--tessera-space-md);
+  color: white;
+  transition: all var(--tessera-transition-normal);
+}
+
+.tessera-input:focus {
+  outline: none;
+  border-color: var(--tessera-primary-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.tessera-input::placeholder {
+  color: rgba(148, 163, 184, 0.6);
+}
+
+/* Analytics Dashboard */
+.tessera-analytics-card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: var(--tessera-radius-xl);
+  padding: var(--tessera-space-xl);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.tessera-analytics-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--tessera-gradient-primary);
+}
+
+.tessera-metric {
+  font-family: var(--tessera-font-mono);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1;
+  background: var(--tessera-gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Visualization Elements */
+.tessera-viz-container {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: var(--tessera-radius-lg);
+  padding: var(--tessera-space-lg);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.tessera-heatmap-cell {
+  transition: all var(--tessera-transition-fast);
+  cursor: pointer;
+}
+
+.tessera-heatmap-cell:hover {
+  stroke: var(--tessera-primary-400);
+  stroke-width: 2;
+  filter: brightness(1.2);
+}
+
+/* Status Indicators */
+.tessera-status-healthy {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.tessera-status-warning {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.tessera-status-critical {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Loading States */
+.tessera-loading-pulse {
+  animation: tessera-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes tessera-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.tessera-loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.0) 0%,
+    rgba(59, 130, 246, 0.2) 50%,
+    rgba(59, 130, 246, 0.0) 100%
+  );
+  background-size: 200% 100%;
+  animation: tessera-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes tessera-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tessera-nav {
+    padding: var(--tessera-space-sm);
+  }
+  
+  .tessera-card {
+    margin: var(--tessera-space-sm);
+    padding: var(--tessera-space-md);
+  }
+  
+  .tessera-metric {
+    font-size: 2rem;
+  }
+}
+
+/* Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  .tessera-card {
+    background: rgba(15, 23, 42, 0.9);
+  }
+  
+  .tessera-input {
+    background: rgba(30, 41, 59, 0.9);
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .tessera-card {
+    border-width: 2px;
+  }
+  
+  .tessera-btn-primary {
+    border: 2px solid var(--tessera-primary-400);
+  }
+  
+  .tessera-nav-item {
+    border: 1px solid transparent;
+  }
+  
+  .tessera-nav-item:hover {
+    border-color: var(--tessera-primary-400);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .tessera-loading-pulse,
+  .tessera-loading-shimmer {
+    animation: none;
+  }
+}

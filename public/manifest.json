@@ -1,0 +1,21 @@
+{
+  "name": "Tessera - Behavioral Intelligence Platform",
+  "short_name": "Tessera",
+  "description": "Enterprise behavioral intelligence through advanced pattern tessellation",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#3b82f6",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
