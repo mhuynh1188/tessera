@@ -1,12 +1,6 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "cd hex-app && npm run build",
   "outputDirectory": "hex-app/.next",
   "installCommand": "cd hex-app && npm install",
-  "framework": "nextjs",
-  "functions": {
-    "hex-app/src/app/api/**/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  "framework": "nextjs"
 }
