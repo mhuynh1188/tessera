@@ -1,0 +1,184 @@
+-- REGULAR CREATE INDEX COMMANDS (No CONCURRENTLY)
+-- These will work in Supabase SQL editor without transaction block errors
+-- Date: 2025-06-27
+
+-- =====================================================================
+-- CORE USER AND ORGANIZATION FOREIGN KEYS
+-- =====================================================================
+
+-- Users table foreign keys
+CREATE INDEX IF NOT EXISTS idx_users_organization_id_fk ON users(organization_id);
+
+CREATE INDEX IF NOT EXISTS idx_users_manager_id_fk ON users(manager_id);
+
+CREATE INDEX IF NOT EXISTS idx_users_role_id_fk ON users(role_id);
+
+CREATE INDEX IF NOT EXISTS idx_users_subscription_plan_id_fk ON users(subscription_plan_id);
+
+CREATE INDEX IF NOT EXISTS idx_users_archived_by_fk ON users(archived_by);
+
+-- =====================================================================
+-- EMAIL SYSTEM FOREIGN KEYS
+-- =====================================================================
+
+-- Email notifications foreign keys
+CREATE INDEX IF NOT EXISTS idx_email_notifications_user_id_fk ON email_notifications(user_id);
+
+-- Email campaigns foreign keys  
+CREATE INDEX IF NOT EXISTS idx_email_campaigns_template_id_fk ON email_campaigns(template_id);
+
+-- Email preferences foreign keys
+CREATE INDEX IF NOT EXISTS idx_email_preferences_user_id_fk ON email_preferences(user_id);
+
+-- =====================================================================
+-- HEXIE SYSTEM FOREIGN KEYS
+-- =====================================================================
+
+-- Hexie cards foreign keys
+CREATE INDEX IF NOT EXISTS idx_hexie_cards_created_by_fk ON hexie_cards(created_by);
+
+CREATE INDEX IF NOT EXISTS idx_hexie_cards_archived_by_fk ON hexie_cards(archived_by);
+
+CREATE INDEX IF NOT EXISTS idx_hexie_cards_antipattern_type_id_fk ON hexie_cards(antipattern_type_id);
+
+-- Hexie categories foreign keys
+CREATE INDEX IF NOT EXISTS idx_hexie_categories_created_by_fk ON hexie_categories(created_by);
+
+CREATE INDEX IF NOT EXISTS idx_hexie_categories_archived_by_fk ON hexie_categories(archived_by);
+
+-- Hexie card tags foreign keys
+CREATE INDEX IF NOT EXISTS idx_hexie_card_tags_hexie_card_id_fk ON hexie_card_tags(hexie_card_id);
+
+CREATE INDEX IF NOT EXISTS idx_hexie_card_tags_tag_id_fk ON hexie_card_tags(tag_id);
+
+-- =====================================================================
+-- WORKSPACE SYSTEM FOREIGN KEYS
+-- =====================================================================
+
+-- Workspaces foreign keys
+CREATE INDEX IF NOT EXISTS idx_workspaces_owner_id_fk ON workspaces(owner_id);
+
+-- Workspace collaborators foreign keys
+CREATE INDEX IF NOT EXISTS idx_workspace_collaborators_workspace_id_fk ON workspace_collaborators(workspace_id);
+
+CREATE INDEX IF NOT EXISTS idx_workspace_collaborators_user_id_fk ON workspace_collaborators(user_id);
+
+-- Workspace scenarios foreign keys
+CREATE INDEX IF NOT EXISTS idx_workspace_scenarios_workspace_id_fk ON workspace_scenarios(workspace_id);
+
+CREATE INDEX IF NOT EXISTS idx_workspace_scenarios_scenario_id_fk ON workspace_scenarios(scenario_id);
+
+CREATE INDEX IF NOT EXISTS idx_workspace_scenarios_created_by_fk ON workspace_scenarios(created_by);
+
+-- =====================================================================
+-- SCENARIO SYSTEM FOREIGN KEYS
+-- =====================================================================
+
+-- Scenarios foreign keys
+CREATE INDEX IF NOT EXISTS idx_scenarios_category_id_fk ON scenarios(category_id);
+
+CREATE INDEX IF NOT EXISTS idx_scenarios_created_by_fk ON scenarios(created_by);
+
+-- Scenario categories foreign keys
+CREATE INDEX IF NOT EXISTS idx_scenario_categories_created_by_fk ON scenario_categories(created_by);
+
+-- Scenario ratings foreign keys
+CREATE INDEX IF NOT EXISTS idx_scenario_ratings_scenario_id_fk ON scenario_ratings(scenario_id);
+
+CREATE INDEX IF NOT EXISTS idx_scenario_ratings_user_id_fk ON scenario_ratings(user_id);
+
+-- Custom scenarios foreign keys
+CREATE INDEX IF NOT EXISTS idx_custom_scenarios_created_by_fk ON custom_scenarios(created_by);
+
+-- =====================================================================
+-- USER INTERACTION FOREIGN KEYS
+-- =====================================================================
+
+-- User interactions foreign keys
+CREATE INDEX IF NOT EXISTS idx_user_interactions_user_id_fk ON user_interactions(user_id);
+
+CREATE INDEX IF NOT EXISTS idx_user_interactions_workspace_id_fk ON user_interactions(workspace_id);
+
+CREATE INDEX IF NOT EXISTS idx_user_interactions_intervention_id_fk ON user_interactions(intervention_id);
+
+-- =====================================================================
+-- INTERVENTION SYSTEM FOREIGN KEYS
+-- =====================================================================
+
+-- Interventions foreign keys
+CREATE INDEX IF NOT EXISTS idx_interventions_created_by_fk ON interventions(created_by);
+
+-- Intervention participants foreign keys
+CREATE INDEX IF NOT EXISTS idx_intervention_participants_intervention_id_fk ON intervention_participants(intervention_id);
+
+CREATE INDEX IF NOT EXISTS idx_intervention_participants_user_id_fk ON intervention_participants(user_id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- =====================================================================
+-- AUTHENTICATION FOREIGN KEYS
+-- =====================================================================
+
+-- User sessions foreign keys
+CREATE INDEX IF NOT EXISTS idx_user_sessions_user_id_fk ON user_sessions(user_id);
+
+-- User two factor auth foreign keys
+CREATE INDEX IF NOT EXISTS idx_user_two_factor_auth_user_id_fk ON user_two_factor_auth(user_id);
+
+-- User invitations foreign keys
+CREATE INDEX IF NOT EXISTS idx_user_invitations_invited_by_fk ON user_invitations(invited_by);
+
+CREATE INDEX IF NOT EXISTS idx_user_invitations_organization_id_fk ON user_invitations(organization_id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- =====================================================================
+-- ORGANIZATION FOREIGN KEYS
+-- =====================================================================
+
+-- Organization members foreign keys
+CREATE INDEX IF NOT EXISTS idx_organization_members_organization_id_fk ON organization_members(organization_id);
+
+-- User profiles foreign keys
+CREATE INDEX IF NOT EXISTS idx_user_profiles_user_id_fk ON user_profiles(user_id);
+
+-- User competencies foreign keys
+CREATE INDEX IF NOT EXISTS idx_user_competencies_user_id_fk ON user_competencies(user_id);
+
+-- Success message
+SELECT 'Foreign key indexes created successfully!' as result;

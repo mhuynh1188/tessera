@@ -1,0 +1,244 @@
+-- TARGETED FOREIGN KEY INDEXES FOR YOUR ACTUAL SUPABASE SCHEMA
+-- Run these commands ONE AT A TIME based on your actual table structure
+-- Date: 2025-06-27
+
+-- =====================================================================
+-- CORE USER AND ORGANIZATION FOREIGN KEYS
+-- =====================================================================
+
+-- Users table foreign keys (these columns exist in your schema)
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_users_organization_id ON users(organization_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_users_manager_id ON users(manager_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_users_role_id_fk ON users(role_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_users_subscription_plan_id_fk ON users(subscription_plan_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_users_archived_by ON users(archived_by);
+
+-- =====================================================================
+-- EMAIL SYSTEM FOREIGN KEYS (these tables exist)
+-- =====================================================================
+
+-- Email notifications foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_email_notifications_user_id ON email_notifications(user_id);
+
+-- Email campaigns foreign keys  
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_email_campaigns_template_id ON email_campaigns(template_id);
+
+-- Email preferences foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_email_preferences_user_id_fk ON email_preferences(user_id);
+
+-- =====================================================================
+-- HEXIE SYSTEM FOREIGN KEYS (your main domain)
+-- =====================================================================
+
+-- Hexie cards foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_cards_created_by_fk ON hexie_cards(created_by);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_cards_archived_by_fk ON hexie_cards(archived_by);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_cards_antipattern_type_id ON hexie_cards(antipattern_type_id);
+
+-- Hexie categories foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_categories_created_by_fk ON hexie_categories(created_by);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_categories_archived_by_fk ON hexie_categories(archived_by);
+
+-- Hexie card tags foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_card_tags_hexie_card_id ON hexie_card_tags(hexie_card_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_card_tags_tag_id ON hexie_card_tags(tag_id);
+
+-- Hexie instances foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_instances_hexie_card_id ON hexie_instances(hexie_card_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_instances_board_id ON hexie_instances(board_id);
+
+-- Hexie votes foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_votes_hexie_instance_id_fk ON hexie_votes(hexie_instance_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_votes_participant_id ON hexie_votes(participant_id);
+
+-- Hexie contests foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_contests_hexie_id_fk ON hexie_contests(hexie_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_contests_created_by_fk ON hexie_contests(created_by);
+
+-- Hexie contest settings foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_contest_settings_hexie_id_fk ON hexie_contest_settings(hexie_id);
+
+-- Hexie combinations foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_hexie_combinations_board_id_fk ON hexie_combinations(board_id);
+
+-- =====================================================================
+-- WORKSPACE SYSTEM FOREIGN KEYS
+-- =====================================================================
+
+-- Workspaces foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_workspaces_owner_id ON workspaces(owner_id);
+
+-- Workspace collaborators foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_workspace_collaborators_workspace_id_fk ON workspace_collaborators(workspace_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_workspace_collaborators_user_id_fk ON workspace_collaborators(user_id);
+
+-- Workspace boards foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_workspace_boards_workspace_id_fk ON workspace_boards(workspace_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_workspace_boards_session_id_fk ON workspace_boards(session_id);
+
+-- Workspace scenarios foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_workspace_scenarios_workspace_id_fk ON workspace_scenarios(workspace_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_workspace_scenarios_scenario_id ON workspace_scenarios(scenario_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_workspace_scenarios_created_by ON workspace_scenarios(created_by);
+
+-- =====================================================================
+-- SCENARIO SYSTEM FOREIGN KEYS
+-- =====================================================================
+
+-- Scenarios foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_scenarios_category_id_fk ON scenarios(category_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_scenarios_created_by_fk ON scenarios(created_by);
+
+-- Scenario categories foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_scenario_categories_created_by ON scenario_categories(created_by);
+
+-- Scenario ratings foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_scenario_ratings_scenario_id_fk ON scenario_ratings(scenario_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_scenario_ratings_user_id_fk ON scenario_ratings(user_id);
+
+-- Custom scenarios foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_custom_scenarios_created_by_fk ON custom_scenarios(created_by);
+
+-- =====================================================================
+-- USER INTERACTION AND ANALYTICS FOREIGN KEYS
+-- =====================================================================
+
+-- User interactions foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_interactions_user_id_fk ON user_interactions(user_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_interactions_workspace_id_fk ON user_interactions(workspace_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_interactions_intervention_id ON user_interactions(intervention_id);
+
+-- Game sessions foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_game_sessions_user_id_fk ON game_sessions(user_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_game_sessions_board_id_fk ON game_sessions(board_id);
+
+-- =====================================================================
+-- INTERVENTION SYSTEM FOREIGN KEYS
+-- =====================================================================
+
+-- Interventions foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_interventions_created_by_fk ON interventions(created_by);
+
+-- Intervention participants foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_intervention_participants_intervention_id ON intervention_participants(intervention_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_intervention_participants_user_id ON intervention_participants(user_id);
+
+-- Intervention progress foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_intervention_progress_intervention_id ON intervention_progress(intervention_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_intervention_progress_user_id ON intervention_progress(user_id);
+
+-- =====================================================================
+-- ORGANIZATION AND MEMBER FOREIGN KEYS
+-- =====================================================================
+
+-- Organization members foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_organization_members_organization_id_fk ON organization_members(organization_id);
+
+-- User profiles foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_profiles_user_id_fk ON user_profiles(user_id);
+
+-- User competencies foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_competencies_user_id_fk ON user_competencies(user_id);
+
+-- =====================================================================
+-- AUTHENTICATION AND SECURITY FOREIGN KEYS
+-- =====================================================================
+
+-- User sessions foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_sessions_user_id_fk ON user_sessions(user_id);
+
+-- User two factor auth foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_two_factor_auth_user_id_fk ON user_two_factor_auth(user_id);
+
+-- User invitations foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_invitations_invited_by ON user_invitations(invited_by);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_invitations_organization_id ON user_invitations(organization_id);
+
+-- =====================================================================
+-- AUDIT AND MONITORING FOREIGN KEYS
+-- =====================================================================
+
+-- Audit logs foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_audit_logs_user_id ON audit_logs(user_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_audit_logs_organization_id ON audit_logs(organization_id);
+
+-- Admin activity logs foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_admin_activity_logs_user_id_fk ON admin_activity_logs(user_id);
+
+-- Safety monitoring foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_safety_monitoring_user_id_fk ON safety_monitoring(user_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_safety_monitoring_reported_by ON safety_monitoring(reported_by);
+
+-- =====================================================================
+-- SECURITY AND COMPLIANCE FOREIGN KEYS
+-- =====================================================================
+
+-- Security policies foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_security_policies_organization_id_fk ON security_policies(organization_id);
+
+-- IP allowlist foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_ip_allowlist_organization_id_fk ON ip_allowlist(organization_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_ip_allowlist_created_by ON ip_allowlist(created_by);
+
+-- MFA settings foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_mfa_settings_organization_id_fk ON mfa_settings(organization_id);
+
+-- Compliance framework foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_compliance_framework_organization_id_fk ON compliance_framework(organization_id);
+
+-- =====================================================================
+-- MISCELLANEOUS FOREIGN KEYS
+-- =====================================================================
+
+-- Collections foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_collections_created_by ON collections(created_by);
+
+-- Combination feedback foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_combination_feedback_combination_id_fk ON combination_feedback(combination_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_combination_feedback_user_id ON combination_feedback(user_id);
+
+-- User card access foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_card_access_user_id ON user_card_access(user_id);
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_user_card_access_card_id ON user_card_access(card_id);
+
+-- Support resources foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_support_resources_created_by ON support_resources(created_by);
+
+-- System settings foreign keys
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_system_settings_organization_id_fk ON system_settings(organization_id);
+
+-- =====================================================================
+-- INSTRUCTIONS
+-- =====================================================================
+-- 1. Copy individual commands from above
+-- 2. Run them ONE AT A TIME in your Supabase SQL editor
+-- 3. Wait for each to complete before running the next
+-- 4. Skip any commands for tables/columns that don't exist in your specific setup
